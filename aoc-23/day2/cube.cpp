@@ -168,21 +168,23 @@ int SumOfPowerOfMinSets(std::map<int, std::vector<std::vector<int>>> map) {
         std::vector<int> possibleRounds;
 
         // variables for max of each color cube
-        int redMax, greenMax, blueMax, product = 0;
+        int redMax = 0;
+        int greenMax = 0;
+        int blueMax = 0;
+        int product = 0;
         // Iterate through each game's rounds
         // find max of each color cube per game
         for (int i = 0; i < game.size(); i++) {
             
             if (game[i][0] > redMax) {
                 redMax = game[i][0];
-            } else if (game[i][1] > greenMax) {
-                greenMax = game[i][1];
-            }  else if (game[i][2] > blueMax) {
-                blueMax = game[i][2];
-            } else {
-                continue;
             }
-            std::cout << "Maxes {R,G,B}: " << "{" << redMax << "," << greenMax << "," << blueMax << "}" << std::endl; 
+            if (game[i][1] > greenMax) {
+                greenMax = game[i][1];
+            }
+            if (game[i][2] > blueMax) {
+                blueMax = game[i][2];
+            }
         }
         
         // find product of each max
